@@ -1,7 +1,8 @@
 package group.microserviceuser.user.dto;
 
+import group.microserviceuser.common.entity.user.UserRoleEnum;
 import lombok.Getter;
-import org.example.share.config.global.entity.user.UserRoleEnum;
+
 
 @Getter
 public class UserResponseDto {

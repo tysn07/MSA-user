@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation files("commonlib-0.0.6.jar")
+
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'

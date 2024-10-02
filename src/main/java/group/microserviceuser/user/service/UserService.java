@@ -1,19 +1,17 @@
 package group.microserviceuser.user.service;
 
+import group.microserviceuser.common.entity.user.User;
+import group.microserviceuser.common.entity.user.UserRoleEnum;
+import group.microserviceuser.common.exception.ConflictException;
+import group.microserviceuser.common.exception.NotFoundException;
+import group.microserviceuser.common.exception.UnauthorizedAccessException;
 import group.microserviceuser.user.dto.LoginRequestDto;
 import group.microserviceuser.user.dto.SignupRequestDto;
 import group.microserviceuser.user.dto.UserResponseDto;
 import group.microserviceuser.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.example.share.config.global.entity.user.User;
-import org.example.share.config.global.entity.user.UserRoleEnum;
-import org.example.share.config.global.exception.BadRequestException;
-import org.example.share.config.global.exception.ConflictException;
-import org.example.share.config.global.exception.NotFoundException;
-import org.example.share.config.global.exception.UnauthorizedAccessException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -48,7 +46,7 @@ public class UserService {
             if (!SELLER_TOKEN.equals(signupRequestDto.getAdminToken())) {
                 throw new UnauthorizedAccessException("관리자 암호가 일치하지 않습니다.");
             }
-            role = UserRoleEnum.SELLER;
+            role = UserRoleEnum.ADMIN;
         }
 
         userRepository.save(User.builder()
